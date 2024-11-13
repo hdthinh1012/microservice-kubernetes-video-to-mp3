@@ -1,0 +1,1 @@
+kubectl logs -f auth-6b4fbbf86-98ttt
