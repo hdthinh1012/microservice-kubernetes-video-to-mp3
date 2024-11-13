@@ -41,3 +41,6 @@ Execute script
 ```powershell
 .\deployment\StartDeploy.ps1
 ```
+
+## Guide
+The project is built initially based on FreeCodeCamp guide for Microservice & Kubernetes [video](https://youtu.be/hmkF77F9TLw?feature=shared)
