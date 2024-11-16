@@ -35,22 +35,6 @@ def login():
             return createJWT(auth.username, os.environ.get("JWT_SECRET"), True)
     else:
         return "invalid credentials", 401
-     
-def createJWT(username, secret, authz):
-    return jwt.encode(
-        {
-            "username": username,
-            "exp": datetime.datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(days=1),
-            "iat": datetime.datetime.now(tz=datetime.timezone.utc),
-            "admin": authz
-        },
-        secret,
-        algorithm="HS256"
-    )
-
-# Run this file as entrypoint
-if __name__ == '__main__':
-    server.run(host="0.0.0.0", port=5000) # Ask Flask application listen from any IP from public (0.0.0.0/0, including the loopback address that is accessible only by localhost itself) find in the server (in this case docker container) NIC IP list (one docker container may be assigned to 2 network with 2 different IP address)
 
 @server.route("/validate", methods=["POST"])
 def validate():
@@ -69,3 +53,19 @@ def validate():
         return "not authorized", 403
     
     return decode, 200
+
+def createJWT(username, secret, authz):
+    return jwt.encode(
+        {
+            "username": username,
+            "exp": datetime.datetime.now(tz=datetime.timezone.utc) + datetime.timedelta(days=1),
+            "iat": datetime.datetime.now(tz=datetime.timezone.utc),
+            "admin": authz
+        },
+        secret,
+        algorithm="HS256"
+    )
+
+# Run this file as entrypoint
+if __name__ == '__main__':
+    server.run(host="0.0.0.0", port=5000) # Ask Flask application listen from any IP from public (0.0.0.0/0, including the loopback address that is accessible only by localhost itself) find in the server (in this case docker container) NIC IP list (one docker container may be assigned to 2 network with 2 different IP address)

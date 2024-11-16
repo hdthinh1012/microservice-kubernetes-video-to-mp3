@@ -1,9 +1,11 @@
+param ( [Parameter(Mandatory=$true)] [string]$Account, [Parameter(Mandatory=$true)] [string]$Region, [Parameter(Mandatory=$true)] [string]$Email )
+
 # (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 022499028145.dkr.ecr.ap-southeast-1.amazonaws.com
 
-$ACCOUNT = "aws-account-id"
-$REGION = "ap-southeast-1"
+$ACCOUNT = $Account
+$REGION = $Region
 $SECRET_NAME = "$REGION-ecr-registry"
-$EMAIL = "dummy@email.com"
+$EMAIL = "$Email"
 
 # Get the authorization token from AWS ECR
 

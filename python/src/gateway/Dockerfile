@@ -11,5 +11,5 @@ RUN pip install --no-cache-dir --requirement /app/requirements.txt
 COPY . /app
 
 EXPOSE 8080
-
+ENV PYTHONUNBUFFERED=1
 CMD ["python3", "server.py"]

@@ -6,7 +6,7 @@ metadata:
     app: auth
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: auth
@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
         - name: auth
-          image: 022499028145.dkr.ecr.ap-southeast-1.amazonaws.com/microservice-auth:latest
+          image: microservice-auth:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
           envFrom:

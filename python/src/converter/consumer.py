@@ -7,7 +7,7 @@ def main():
     client = MongoClient("host.minikube.internal", 27017)
     db_videos = client.videos
     db_mp3s = client.mp3s
-    # gridfs
+    # gridfs4
     fs_videos = gridfs.GridFS(db_videos)
     fs_mp3s = gridfs.GridFS(db_mp3s)
 

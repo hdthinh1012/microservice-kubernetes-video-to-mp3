@@ -5,7 +5,7 @@ metadata:
   labels:
     app: converter
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: converter
@@ -20,7 +20,8 @@ spec:
     spec:
       containers:
         - name: converter
-          image: 022499028145.dkr.ecr.ap-southeast-1.amazonaws.com/microservice-converter:latest
+          image: microservice-converter:latest
+          imagePullPolicy: Never
           envFrom:
             - configMapRef:
                 name: converter-configmap

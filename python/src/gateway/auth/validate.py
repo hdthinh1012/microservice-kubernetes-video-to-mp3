@@ -1,7 +1,7 @@
 import os, requests
 
 def token(request):
-    if not "Authorizatoin" in request.headers:
+    if not "Authorization" in request.headers:
         return None, ("missing credentials", 401)
     
     token = request.headers["Authorization"]
@@ -14,6 +14,7 @@ def token(request):
         headers={"Authorization": token}
     )
 
+    print(f"Validation response: {response.text}")
     if response.status_code == 200:
         return response.text, None
     else:
